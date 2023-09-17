@@ -116,7 +116,7 @@ sudo ufw allow 1080/tcp
 sudo ufw allow 1080/udp
 
 #install database
-wget -O /var/lib/marzban/db.sqlite3 "$sfile/db.sqlite3"
+wget -O /var/lib/marzban/db.sqlite3 "https://github.com/GawrAme/MarLing/raw/main/db.sqlite3"
 
 #finishing
 apt autoremove -y
