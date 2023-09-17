@@ -27,7 +27,7 @@ Pastikan anda sudah login sebagai root sebelum menjalankan perintah dibawah
  wget https://raw.githubusercontent.com/GawrAme/MarLing/main/mar.sh && chmod +x mar.sh && ./mar.sh
  ```
  
-Admin bisa ditambahkan dengan command
+Setelah instalasi berhasil, Panel login / Admin bisa ditambahkan dengan command
 ```html
 marzban cli admin create --sudo
  ```
