@@ -1,0 +1,10 @@
+services:
+  marzban:
+    image: gozargah/marzban:dev
+    restart: always
+    env_file: .env
+    network_mode: host
+    volumes:
+    - /etc/timezone:/etc/timezone:ro
+    - /etc/localtime:/etc/localtime:ro
+    - /var/lib/marzban:/var/lib/marzban
