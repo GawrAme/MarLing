@@ -70,13 +70,24 @@ Lalu pada tab **Network** pastikan gRPC dan WebSocket sudah ON
  Saat masuk ke panel, setting host di menu kanan atas <br>
  ![image](https://github.com/GawrAme/MarLing/assets/97426017/6b96bce7-39c7-4b5c-b01e-8dfdea91cb47) </br>
 
-Lalu ubah variabel {SERVER_IP} diatas menjadi domain yang sudah di pointing tadi <br>
- ![Screenshot_20230404-154004_Termius](https://raw.githubusercontent.com/Agunxzzz/MarXray/main/vmess.png)
- ![Screenshot_20230404-154004_Termius](https://raw.githubusercontent.com/Agunxzzz/MarXray/main/vless.png)
- ![Screenshot_20230404-154004_Termius](https://raw.githubusercontent.com/Agunxzzz/MarXray/main/trojan.png)
- <br>
- {SERVER_IP} diatas, ganti dengan domainmu <br>
+Lalu ubah variabel {SERVER_IP} dibawah menjadi domain yang sudah di pointing tadi <br>
+# TROJAN WS
+![image](https://github.com/GawrAme/MarLing/assets/97426017/191a485c-07a7-4a28-88d3-b66fa403abc7)
+# VMESS WS
+![image](https://github.com/GawrAme/MarLing/assets/97426017/7e8b8622-5b55-4d03-aaf3-6a30eabb62e8)
+# VLESS WS
+![image](https://github.com/GawrAme/MarLing/assets/97426017/ed50c2e1-6060-4773-a8bb-067e3fc5b7e4)
+</br>
+
 Jika ada typo atau saran bisa PM ke saya di :<a href="https://t.me/EkoLing" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
 <br>
+Jika anda berminat bisa join ke Telegram channel saya di :<a href="https://t.me/LingVPN" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
+<br>
 
+Ready VPN Xray-Core, mulai dari harga 5k saja <br>
 
+- Paket Promo : https://forms.gle/Lpx6xtPKVHXYUyh67
+- Paket Reguler : https://forms.gle/V1tbqrAq2RkvWJMH7
+- Paket AON : https://forms.gle/SfM2tQ7ypV21weUw6
+
+</br>
