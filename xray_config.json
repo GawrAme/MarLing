@@ -1,0 +1,155 @@
+{
+  "log": {
+    "access": "/var/lib/marzban/access.log",
+    "error": "/var/lib/marzban/error.log",
+    "loglevel": "warning"
+  },
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "1.0.0.1",
+      "127.0.0.1",
+      "::1"
+    ],
+    "tag": "dns-in"
+  },
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "dns-in"
+        ],
+        "outboundTag": "dns-out"
+      },
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "ip": [
+          "geoip:private",
+          "geoip:cn",
+          "geoip:ru"
+        ]
+      },
+      {
+        "type": "field",
+        "protocol": [
+          "bittorent"
+        ],
+        "outboundTag": "block"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "tag": "TROJAN_WS",
+      "listen": "/dev/shm/trojanws.sock",
+      "protocol": "trojan",
+      "settings": {
+        "clients": []
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/trojan"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "tag": "VMESS_WS",
+      "listen": "/dev/shm/vmessws.sock",
+      "protocol": "vmess",
+      "settings": {
+        "clients": []
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/vmess"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "tag": "VLESS_WS",
+      "listen": "/dev/shm/vlessws.sock",
+      "protocol": "vless",
+      "settings": {
+        "clients": [],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/vless"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "tag": "SHADOWSOCKS_OUTLINE",
+      "listen": "0.0.0.0",
+      "port": 1080,
+      "protocol": "shadowsocks",
+      "settings": {
+        "clients": [],
+        "network": "tcp,udp"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      }
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "block"
+    },
+    {
+      "protocol": "dns",
+      "settings": {
+        "nonIPQuery": "skip"
+      },
+      "tag": "dns-out"
+    }
+  ],
+  "policy": {
+    "levels": {
+      "0": {
+        "handshake": 2,
+        "connIdle": 120
+      }
+    }
+  }
+}
