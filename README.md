@@ -15,12 +15,11 @@ WebSocket sudah support untuk 443 TLS, 80 HTTP dan Wildcard path, contoh /enter-
 - Pemahaman dasar perintah Linux
 
 # Sistem VM yang dapat digunakan
-
+- Debian 10 [**RECOMMENDED**]</br>
+- Debian 11 </br>
 - Ubuntu 18.04 </br>
 - Ubuntu 20.04 </br>
 - Ubuntu 22.04 </br>
-- Debian 10 </br>
-- Debian 11 </br>
 
 
 
