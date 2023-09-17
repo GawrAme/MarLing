@@ -1,5 +1,5 @@
 #!/bin/bash
-sfile="https://github.com/GawrAme/MarLing"
+sfile="https://github.com/GawrAme/MarLing/blob/main"
 
 #domain
 read -rp "Masukkan Domain: " domain
@@ -48,7 +48,7 @@ apt-get install libio-socket-inet6-perl libsocket6-perl libcrypt-ssleay-perl lib
 timedatectl set-timezone Asia/Jakarta;
 
 #Install Marzban
-sudo bash -c "$(curl -sL https://github.com/GawrAme/Marzban-scripts/blob/master/marzban.sh)" @ install
+sudo bash -c "$(curl -sL https://github.com/GawrAme/Marzban-scripts/raw/master/marzban.sh)" @ install
 
 #install env
 wget -O /opt/marzban/.env "$sfile/env"
