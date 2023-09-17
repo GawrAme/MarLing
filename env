@@ -1,5 +1,5 @@
-# UVICORN_HOST = "0.0.0.0"
-# UVICORN_PORT = 7879
+UVICORN_HOST = "127.0.0.1"
+UVICORN_PORT = 7879
 
 
 ## We highly recommend add admin using `marzban cli` tool and do not use
@@ -7,7 +7,7 @@
 # SUDO_USERNAME = "admin"
 # SUDO_PASSWORD = "admin"
 
-UVICORN_UDS: "/run/marzban.socket"
+# UVICORN_UDS: "/run/marzban.socket"
 # UVICORN_SSL_CERTFILE = "/var/lib/marzban/xray.crt"
 # UVICORN_SSL_KEYFILE = "/var/lib/marzban/xray.key"
 
