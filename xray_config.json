@@ -44,7 +44,8 @@
   "inbounds": [
     {
       "tag": "TROJAN_WS",
-      "listen": "/dev/shm/trojanws.sock",
+      "listen": "127.0.0.1",
+      "port": 3001,
       "protocol": "trojan",
       "settings": {
         "clients": []
@@ -67,7 +68,8 @@
     },
     {
       "tag": "VMESS_WS",
-      "listen": "/dev/shm/vmessws.sock",
+      "listen": "127.0.0.1",
+      "port": 3002,
       "protocol": "vmess",
       "settings": {
         "clients": []
@@ -90,7 +92,8 @@
     },
     {
       "tag": "VLESS_WS",
-      "listen": "/dev/shm/vlessws.sock",
+      "listen": "127.0.0.1",
+      "port": 3003,
       "protocol": "vless",
       "settings": {
         "clients": [],
