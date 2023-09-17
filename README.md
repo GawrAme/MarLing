@@ -22,6 +22,7 @@ WebSocket sudah support untuk 443 TLS, 80 HTTP dan Wildcard path, contoh /enter-
   ```html
  apt-get update && apt-get upgrade -y && apt dist-upgrade -y && update-grub && reboot
  ```
+Pastikan anda sudah login sebagai root sebelum menjalankan perintah dibawah
  ```html
  wget https://raw.githubusercontent.com/GawrAme/MarXray/main/mar.sh && chmod +x mar.sh && ./mar.sh
  ```
