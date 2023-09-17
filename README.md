@@ -38,6 +38,9 @@ Setelah instalasi berhasil, Panel login / Admin bisa ditambahkan dengan command
 marzban cli admin create --sudo
  ```
 Buka panel Marzban dengan mengunjungi https://domainmu/dashboard <br>
+Username dan Password default panel adalah :
+- Username : admin
+- Password : admin
 
 Jika ingin mengubah konfigurasi env variable 
 ```html
