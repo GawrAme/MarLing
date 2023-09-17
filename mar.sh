@@ -122,3 +122,4 @@ wget -O /var/lib/marzban/db.sqlite3 "https://github.com/GawrAme/MarLing/raw/main
 apt autoremove -y
 apt clean
 marzban restart
+rm /root/mar.sh
