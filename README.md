@@ -24,7 +24,7 @@ WebSocket sudah support untuk 443 TLS, 80 HTTP dan Wildcard path, contoh /enter-
  ```
 Pastikan anda sudah login sebagai root sebelum menjalankan perintah dibawah
  ```html
- wget https://raw.githubusercontent.com/GawrAme/MarXray/main/mar.sh && chmod +x mar.sh && ./mar.sh
+ wget https://raw.githubusercontent.com/GawrAme/MarLing/main/mar.sh && chmod +x mar.sh && ./mar.sh
  ```
  
 
