@@ -27,7 +27,6 @@
         "type": "field",
         "outboundTag": "block",
         "ip": [
-          "geoip:private",
           "geoip:cn",
           "geoip:ru"
         ]
