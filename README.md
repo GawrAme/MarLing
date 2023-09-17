@@ -3,6 +3,12 @@
 Ini adalah [Marzban](https://github.com/Gozargah/Marzban) yang sudah saya tambahkan nginx untuk konfigurasi WebSocket single port. </br>
 WebSocket sudah support untuk 443 TLS, 80 HTTP dan Wildcard path, contoh /enter-your-custom-path/trojan
 
+# List Protocol yang support
+- VLess
+- VMess
+- Trojan
+- ShadowSocks (To Be added)
+
 # Yang harus dipersiapkan
 - VPS dengan minimal spek 1 Core 1 GB ram
 - Domain yang sudah di pointing ke CloudFlare
@@ -31,7 +37,7 @@ Setelah instalasi berhasil, Panel login / Admin bisa ditambahkan dengan command
 ```html
 marzban cli admin create --sudo
  ```
-Buka Panel dengan mengunjungi https://domainmu/dashboard <br>
+Buka panel Marzban dengan mengunjungi https://domainmu/dashboard <br>
 
 Jika ingin mengubah konfigurasi env variable 
 ```html
