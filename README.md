@@ -31,7 +31,7 @@ Setelah instalasi berhasil, Panel login / Admin bisa ditambahkan dengan command
 ```html
 marzban cli admin create --sudo
  ```
-buka webnya dengan mengunjungi https://domainmu/dashboard <br>
+Buka Panel dengan mengunjungi https://domainmu/dashboard <br>
 
 Jika ingin mengubah konfigurasi env variable 
 ```html
