@@ -27,14 +27,12 @@ Pastikan anda sudah login sebagai root sebelum menjalankan perintah dibawah
  wget https://raw.githubusercontent.com/GawrAme/MarLing/main/mar.sh && chmod +x mar.sh && ./mar.sh
  ```
  
-
- 
-buka webnya dengan mengunjungi https://domainmu/dashboard <br>
-
 Admin bisa ditambahkan dengan command
 ```html
 marzban cli admin create --sudo
  ```
+buka webnya dengan mengunjungi https://domainmu/dashboard <br>
+
 Jika ingin mengubah konfigurasi env variable 
 ```html
 nano /opt/marzban/.env
