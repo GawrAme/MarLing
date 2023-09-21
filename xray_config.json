@@ -8,8 +8,7 @@
     "servers": [
       "1.1.1.1",
       "1.0.0.1",
-      "127.0.0.1",
-      "::1"
+      "127.0.0.1"
     ],
     "tag": "dns-in"
   },
@@ -130,7 +129,7 @@
       "tag": "direct",
       "protocol": "freedom",
       "settings": {
-        "domainStrategy": "UseIP"
+        "domainStrategy": "UseIPv4"
       }
     },
     {
