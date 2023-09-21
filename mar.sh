@@ -53,6 +53,14 @@ sudo bash -c "$(curl -sL https://github.com/GawrAme/Marzban-scripts/raw/master/m
 #install env
 wget -O /opt/marzban/.env "https://raw.githubusercontent.com/GawrAme/MarLing/main/env"
 
+#profile
+echo -e 'profile' >> /root/.profile
+wget -O /usr/bin/profile "https://raw.githubusercontent.com/GawrAme/MarLing/main/profile";
+chmod +x /usr/bin/profile
+apt install neofetch -y
+wget -O /usr/bin/cekservice "https://raw.githubusercontent.com/GawrAme/MarLing/main/cekservice.sh"
+chmod +x /usr/bin/cekservice
+
 #install compose
 wget -O /opt/marzban/docker-compose.yml "https://raw.githubusercontent.com/GawrAme/MarLing/main/docker-compose.yml"
 
@@ -98,8 +106,8 @@ apt install socat cron bash-completion -y
 
 #install cert
 systemctl stop nginx
-curl https://get.acme.sh | sh -s email=lingssh2@gmail.com
-/root/.acme.sh/acme.sh --server letsencrypt --register-account -m lingssh2@gmail.com --issue -d $domain --standalone -k ec-256
+curl https://get.acme.sh | sh -s email=akunpispon2@gmail.com
+/root/.acme.sh/acme.sh --server letsencrypt --register-account -m akunpispon2@gmail.com --issue -d $domain --standalone -k ec-256
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /var/lib/marzban/xray.crt --keypath /var/lib/marzban/xray.key --ecc
 systemctl start nginx
 wget -O /var/lib/marzban/xray_config.json "https://raw.githubusercontent.com/GawrAme/MarLing/main/xray_config.json"
@@ -114,6 +122,7 @@ sudo ufw allow https
 sudo ufw allow 8081
 sudo ufw allow 1080/tcp
 sudo ufw allow 1080/udp
+yes | sudo ufw enable
 
 #install database
 wget -O /var/lib/marzban/db.sqlite3 "https://github.com/GawrAme/MarLing/raw/main/db.sqlite3"
