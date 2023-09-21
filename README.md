@@ -91,7 +91,6 @@ Jika anda berminat bisa join ke Telegram channel saya di :<a href="https://t.me/
 
 Ready VPN Xray-Core, mulai dari harga 5k saja <br>
 
-- Paket Promo : https://forms.gle/Lpx6xtPKVHXYUyh67
 - Paket Reguler : https://forms.gle/V1tbqrAq2RkvWJMH7
 - Paket AON : https://forms.gle/SfM2tQ7ypV21weUw6
 
