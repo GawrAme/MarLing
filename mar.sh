@@ -38,7 +38,10 @@ net.core.rmem_max=4000000
 net.ipv4.tcp_mtu_probing = 1
 net.ipv4.ip_forward=1
 net.core.default_qdisc=fq
-net.ipv4.tcp_congestion_control=bbr' >> /etc/sysctl.conf
+net.ipv4.tcp_congestion_control=bbr
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+net.ipv6.conf.lo.disable_ipv6=1' >> /etc/sysctl.conf
 sysctl -p;
 
 #install toolkit
