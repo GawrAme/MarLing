@@ -83,13 +83,8 @@ rm -f /root/vnstat-2.6.tar.gz
 rm -rf /root/vnstat-2.6
 
 #Install Speedtest
-apt-get install debian-archive-keyring curl gnupg apt-transport-https -y
-mkdir -p /etc/apt/keyrings/
-curl -fsSL https://packagecloud.io/ookla/speedtest-cli/gpgkey | gpg --dearmor > /etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg
-echo "deb [signed-by=/etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ `lsb_release -cs` main
-deb-src [signed-by=/etc/apt/keyrings/ookla_speedtest-cli-archive-keyring.gpg] https://packagecloud.io/ookla/speedtest-cli/debian/ `lsb_release -cs` main" > /etc/apt/sources.list.d/ookla_speedtest-cli.list
-apt-get update
-apt install speedtest -y
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+sudo apt-get install speedtest -y
 
 #install nginx
 apt install nginx -y
