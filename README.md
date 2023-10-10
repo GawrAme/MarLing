@@ -89,13 +89,13 @@ Lalu ubah variabel {SERVER_IP} dibawah menjadi domain yang sudah di pointing tad
 </br>
 
 Jika ada typo atau saran bisa PM ke saya di :<a href="https://t.me/EkoLing" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
-<br>
 Jika anda berminat bisa join ke Telegram channel saya di :<a href="https://t.me/LingVPN" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
 <br>
 
-Ready VPN Xray-Core, mulai dari harga 5k saja <br>
+Saya juga menyediakan VPN siap pakai menggunakan Marzban Xray-Core, harga mulai dari 5ribuan <br>
 
 - Paket Reguler : https://forms.gle/V1tbqrAq2RkvWJMH7
 - Paket AON : https://forms.gle/SfM2tQ7ypV21weUw6
+- Paket VIP : https://forms.gle/W9ZzYT2XJWAEUQhG6
 
 </br>
