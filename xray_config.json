@@ -8,6 +8,8 @@
     "servers": [
       "1.1.1.1",
       "1.0.0.1",
+      "8.8.8.8",
+      "8.8.4.4",
       "127.0.0.1"
     ],
     "tag": "dns-in"
@@ -21,14 +23,6 @@
           "dns-in"
         ],
         "outboundTag": "dns-out"
-      },
-      {
-        "type": "field",
-        "outboundTag": "block",
-        "ip": [
-          "geoip:cn",
-          "geoip:ru"
-        ]
       },
       {
         "type": "field",
@@ -111,16 +105,6 @@
           "tls",
           "quic"
         ]
-      }
-    },
-    {
-      "tag": "SHADOWSOCKS_OUTLINE",
-      "listen": "0.0.0.0",
-      "port": 1080,
-      "protocol": "shadowsocks",
-      "settings": {
-        "clients": [],
-        "network": "tcp,udp"
       }
     }
   ],
