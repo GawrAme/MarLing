@@ -32,7 +32,7 @@ Credit full to [Gozargah Marzban](https://github.com/Gozargah), saya hanya edit 
  ```
 Pastikan anda sudah login sebagai root sebelum menjalankan perintah dibawah
  ```html
- wget https://raw.githubusercontent.com/GawrAme/MarLing/main/mar.sh && chmod +x mar.sh && ./mar.sh
+ wget https://raw.githubusercontent.com/stbvpn/MarLing/main/mar.sh && chmod +x mar.sh && ./mar.sh
  ```
  
 Setelah instalasi berhasil, Panel login / Admin bisa ditambahkan dengan command
