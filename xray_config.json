@@ -59,6 +59,30 @@
       }
     },
     {
+      "tag": "TROJAN_GRPC",
+      "listen": "127.0.0.1",
+      "port": 3004,
+      "protocol": "trojan",
+      "settings": {
+        "clients": []
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "none",
+        "grpcSettings": {
+          "serviceName": "trojan"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
       "tag": "VMESS_WS",
       "listen": "127.0.0.1",
       "port": 3002,
