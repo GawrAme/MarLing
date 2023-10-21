@@ -35,7 +35,7 @@
   },
   "inbounds": [
     {
-      "tag": "TROJAN_WS",
+      "tag": "TROJAN_WS", 
       "listen": "127.0.0.1",
       "port": 3001,
       "protocol": "trojan",
@@ -66,7 +66,7 @@
       "settings": {
         "clients": []
       },
-      "streamSettings": {
+      "streamSettings": { 
         "network": "grpc",
         "security": "none",
         "grpcSettings": {
@@ -106,6 +106,30 @@
         ]
       }
     },
+	{
+      "tag": "VMESS_GRPC",
+      "listen": "127.0.0.1",
+      "port": 3005,
+      "protocol": "vmess",
+      "settings": {
+        "clients": []
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "none",
+        "grpcSettings": {
+          "serviceName": "vmess"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
     {
       "tag": "VLESS_WS",
       "listen": "127.0.0.1",
@@ -120,6 +144,31 @@
         "security": "none",
         "wsSettings": {
           "path": "/vless"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "tag": "VLESS_GRPC",
+      "listen": "127.0.0.1",
+      "port": 3006,
+      "protocol": "vless",
+      "settings": {
+        "clients": [],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "none",
+        "grpcSettings": {
+          "serviceName": "vless"
         }
       },
       "sniffing": {
