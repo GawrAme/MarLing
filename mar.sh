@@ -4,7 +4,10 @@ sfile="https://github.com/GawrAme/MarLing/blob/main"
 #domain
 read -rp "Masukkan Domain: " domain
 echo "$domain" > /root/domain
-domain=$(cat /root/domain)
+domain=$(cat /root/domain)\
+
+#email
+read -rp "Masukkan Email anda: " email
 
 #Preparation
 clear
@@ -104,8 +107,8 @@ apt install socat cron bash-completion -y
 
 #install cert
 systemctl stop nginx
-curl https://get.acme.sh | sh -s email=akunpispon2@gmail.com
-/root/.acme.sh/acme.sh --server letsencrypt --register-account -m akunpispon2@gmail.com --issue -d $domain --standalone -k ec-256
+curl https://get.acme.sh | sh -s email=$email
+/root/.acme.sh/acme.sh --server letsencrypt --register-account -m $email --issue -d $domain --standalone -k ec-256
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /var/lib/marzban/xray.crt --keypath /var/lib/marzban/xray.key --ecc
 systemctl start nginx
 wget -O /var/lib/marzban/xray_config.json "https://raw.githubusercontent.com/GawrAme/MarLing/main/xray_config.json"
