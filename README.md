@@ -11,7 +11,6 @@ Credit full to [Gozargah Marzban](https://github.com/Gozargah), saya hanya edit 
 - VLess
 - VMess
 - Trojan
-- ShadowSocks (To Be added)
 
 # Yang harus dipersiapkan
 - VPS dengan minimal spek 1 Core 1 GB ram
@@ -41,9 +40,6 @@ Setelah instalasi berhasil, Panel login / Admin bisa ditambahkan dengan command
 marzban cli admin create --sudo
  ```
 Buka panel Marzban dengan mengunjungi https://domainmu/dashboard <br>
-Username dan Password default panel adalah :
-- Username : admin
-- Password : admin
 
 Jika ingin mengubah konfigurasi env variable 
 ```html
