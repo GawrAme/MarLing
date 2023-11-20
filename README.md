@@ -100,10 +100,9 @@ Jika ada typo atau saran bisa PM ke saya di :<a href="https://t.me/EkoLing" targ
 Jika anda berminat bisa join ke Telegram channel saya di :<a href="https://t.me/LingVPN" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
 <br>
 
-Saya juga menyediakan VPN siap pakai menggunakan Marzban Xray-Core, harga mulai dari 5ribuan <br>
+Jika menurut pean script ini membantu, boleh kira nya membelikan saya secangkir kopi melalui QRis dibawah, berapapun nominal nya saya terima 🙏 <br>
+![image](https://github.com/GawrAme/MarLing/assets/97426017/096f46ba-ed4d-47c8-a887-f3f3acd595d5)
 
-- Paket Reguler : https://forms.gle/V1tbqrAq2RkvWJMH7
-- Paket AON : https://forms.gle/SfM2tQ7ypV21weUw6
-- Paket VIP : https://forms.gle/W9ZzYT2XJWAEUQhG6
+Terima kasih orang baik! 🙏 
 
 </br>
