@@ -129,6 +129,11 @@ yes | sudo ufw enable
 #install database
 wget -O /var/lib/marzban/db.sqlite3 "https://github.com/GawrAme/MarLing/raw/main/db.sqlite3"
 
+#install WARP Proxy
+wget -O /root/warp "https://raw.githubusercontent.com/hamid-gh98/x-ui-scripts/main/install_warp_proxy.sh"
+sudo chmod +x /root/warp
+sudo bash /root/warp -y 
+
 #finishing
 apt autoremove -y
 apt clean
