@@ -5,7 +5,12 @@ WebSocket sudah support untuk 443 TLS, 80 HTTP dan Wildcard path, contoh /enter-
 gRPC sudah support untuk 443 TLS </br>
 
 Disclaimer: Proyek ini hanya untuk pembelajaran dan komunikasi pribadi, mohon jangan menggunakannya untuk tujuan ilegal. </br>
-Credit full to [Gozargah Marzban](https://github.com/Gozargah), saya hanya edit sedikit untuk instalasi sederhana bagi pemula . </br>
+Credit aplikasi full to [Gozargah Marzban](https://github.com/Gozargah), saya hanya edit sedikit untuk instalasi sederhana bagi pemula . </br>
+
+# Special Thanks to
+- [Gozargah](https://github.com/Gozargah/Marzban)
+- [hamid-gh98](https://github.com/hamid-gh98)
+- [x0sina](https://github.com/x0sina/marzban-sub)
 
 # List Protocol yang support
 - VLess
