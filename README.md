@@ -1,7 +1,8 @@
 # MarLing
 
-Ini adalah [Marzban](https://github.com/Gozargah/Marzban) yang sudah saya tambahkan nginx untuk konfigurasi WebSocket single port. </br>
+Ini adalah [Marzban](https://github.com/Gozargah/Marzban) yang sudah saya tambahkan nginx untuk konfigurasi koneksi WebSocket dan gRPC single port. </br>
 WebSocket sudah support untuk 443 TLS, 80 HTTP dan Wildcard path, contoh /enter-your-custom-path/trojan </br>
+gRPC sudah support untuk 443 TLS </br>
 
 Disclaimer: Proyek ini hanya untuk pembelajaran dan komunikasi pribadi, mohon jangan menggunakannya untuk tujuan ilegal. </br>
 Credit full to [Gozargah Marzban](https://github.com/Gozargah), saya hanya edit sedikit untuk instalasi sederhana bagi pemula . </br>
@@ -18,8 +19,8 @@ Credit full to [Gozargah Marzban](https://github.com/Gozargah), saya hanya edit 
 - Pemahaman dasar perintah Linux
 
 # Sistem VM yang dapat digunakan
-- Debian 10 [**RECOMMENDED**]</br>
-- Debian 11 </br>
+- Debian 10 </br>
+- Debian 11 [**RECOMMENDED**] </br>
 - Ubuntu 18.04 </br>
 - Ubuntu 20.04 </br>
 - Ubuntu 22.04 </br>
