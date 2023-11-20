@@ -136,6 +136,7 @@ sudo bash /root/warp -y
 
 #finishing
 apt autoremove -y
+rm /root/mar.sh
 apt clean
 marzban restart
-rm /root/mar.sh
+
