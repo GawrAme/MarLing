@@ -136,6 +136,7 @@ sudo bash /root/warp -y
 
 #finishing
 apt autoremove -y
+systemctl restart nginx
 rm /root/mar.sh
 apt clean
 marzban restart
