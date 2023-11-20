@@ -25,8 +25,8 @@ XRAY_JSON = "/var/lib/marzban/xray_config.json"
 
 
 # CLASH_SUBSCRIPTION_TEMPLATE="clash/my-custom-template.yml"
-# SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
-# HOME_PAGE_TEMPLATE="home/index.html"
+SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
+HOME_PAGE_TEMPLATE="home/index.html"
 # SUBSCRIPTION_PAGE_LANG="en"
 
 SQLALCHEMY_DATABASE_URL = "sqlite:////var/lib/marzban/db.sqlite3"
