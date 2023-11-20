@@ -83,6 +83,12 @@ Lalu ubah variabel {SERVER_IP} dibawah menjadi domain yang sudah di pointing tad
 ![image](https://github.com/GawrAme/MarLing/assets/97426017/7e8b8622-5b55-4d03-aaf3-6a30eabb62e8)
 # VLESS WS
 ![image](https://github.com/GawrAme/MarLing/assets/97426017/ed50c2e1-6060-4773-a8bb-067e3fc5b7e4)
+# TROJAN gRPC
+![image](https://github.com/GawrAme/MarLing/assets/97426017/46f7c9d5-953a-4623-a814-b5f8f6a96a56)
+# VMESS gRPC
+![image](https://github.com/GawrAme/MarLing/assets/97426017/1bbc87ad-0653-4abc-9e6f-f18eaa6586cf)
+# VLESS gRPC
+![image](https://github.com/GawrAme/MarLing/assets/97426017/6e2cbaa1-4c62-4d93-b55e-142ec734de6c)
 </br>
 
 Jika ada typo atau saran bisa PM ke saya di :<a href="https://t.me/EkoLing" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
