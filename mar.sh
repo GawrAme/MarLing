@@ -1,10 +1,88 @@
 #!/bin/bash
-sfile="https://github.com/GawrAme/MarLing/blob/main"
 
+# Check if the script is run as root
+if [ "$(id -u)" != "0" ]; then
+    echo "Error: Skrip ini harus dijalankan sebagai root."
+    exit 1
+fi
+
+# Check supported operating system
+supported_os=false
+
+if [ -f /etc/os-release ]; then
+    os_name=$(grep -E '^ID=' /etc/os-release | cut -d= -f2)
+    os_version=$(grep -E '^VERSION_ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
+
+    if [ "$os_name" == "debian" ] && [ "$os_version" == "11" ]; then
+        supported_os=true
+    elif [ "$os_name" == "ubuntu" ] && [ "$os_version" == "20.04" ]; then
+        supported_os=true
+    fi
+fi
+apt install sudo -y
+if [ "$supported_os" != true ]; then
+    echo "Error: Skrip ini hanya support di Debian 11 dan Ubuntu 20.04. Mohon gunakan OS yang di support."
+    exit 1
+fi
+
+# Fungsi untuk menambahkan repo Debian 11
+addDebian11Repo() {
+    echo "#mirror_kambing-sysadmind deb11
+deb http://kartolo.sby.datautama.net.id/debian bullseye main contrib non-free
+deb http://kartolo.sby.datautama.net.id/debian bullseye-updates main contrib non-free
+deb http://kartolo.sby.datautama.net.id/debian-security bullseye-security main contrib non-free" | sudo tee /etc/apt/sources.list > /dev/null
+}
+
+# Fungsi untuk menambahkan repo Ubuntu 20.04
+addUbuntu2004Repo() {
+    echo "#mirror kartolo ubuntu 20.04
+deb http://kartolo.sby.datautama.net.id/ubuntu/ focal main restricted universe multiverse
+deb http://kartolo.sby.datautama.net.id/ubuntu/ focal-updates main restricted universe multiverse
+deb http://kartolo.sby.datautama.net.id/ubuntu/ focal-security main restricted universe multiverse
+deb http://kartolo.sby.datautama.net.id/ubuntu/ focal-backports main restricted universe multiverse
+deb http://kartolo.sby.datautama.net.id/ubuntu/ focal-proposed main restricted universe multiverse" | sudo tee /etc/apt/sources.list > /dev/null
+}
+
+# Mendapatkan informasi kode negara dan OS
+COUNTRY_CODE=$(curl -s https://ipinfo.io/country)
+OS=$(lsb_release -si)
+
+# Pemeriksaan IP Indonesia
+if [[ "$COUNTRY_CODE" == "ID" ]]; then
+    echo "IP Indonesia terdeteksi, menggunakan repositories lokal Indonesia"
+
+    # Pemeriksaan OS untuk menambahkan repo yang sesuai
+    case "$OS" in
+        Debian)
+	VERSION=$(lsb_release -sr)
+			if [ "$VERSION" == "11" ]; then
+            addDebian11Repo
+			else
+                echo "Versi Debian tidak didukung."
+			fi
+            ;;
+        Ubuntu)
+            VERSION=$(lsb_release -sr)
+            if [ "$VERSION" == "20.04" ]; then
+                addUbuntu2004Repo
+            else
+                echo "Versi Ubuntu tidak didukung."
+            fi
+            ;;
+        *)
+            echo "Sistem Operasi tidak didukung."
+            ;;
+    esac
+else
+    echo "IP di luar Indonesia."
+
+    # Lanjutkan dengan repo bawaan OS
+fi
+mkdir -p /etc/data
 #domain
 read -rp "Masukkan Domain: " domain
-echo "$domain" > /root/domain
-domain=$(cat /root/domain)
+echo "$domain" > /etc/data/domain
+domain=$(cat /etc/datadomain)
 
 #email
 read -rp "Masukkan Email anda: " email
@@ -93,15 +171,14 @@ curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.
 sudo apt-get install speedtest -y
 
 #install nginx
-apt install nginx -y
-rm /etc/nginx/conf.d/default.conf
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/GawrAme/MarLing/main/nginx.conf"
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/GawrAme/MarLing/main/vps.conf"
-wget -O /etc/nginx/conf.d/xray.conf "https://raw.githubusercontent.com/GawrAme/MarLing/main/xray.conf"
-systemctl enable nginx
+mkdir -p /var/log/nginx
+touch /var/log/nginx/access.log
+touch /var/log/nginx/error.log
+wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/GawrAme/MarLing/main/nginx.conf"
+wget -O /opt/marzban/default.conf "https://raw.githubusercontent.com/GawrAme/MarLing/main/vps.conf"
+wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/GawrAme/MarLing/main/xray.conf"
 mkdir -p /var/www/html
-echo "<pre>Setup by LingVPN</pre>" > /var/www/html/index.html
-systemctl start nginx
+echo "<pre>Setup by AutoScript LingVPN</pre>" > /var/www/html/index.html
 
 #install socat
 apt install iptables -y
@@ -111,7 +188,7 @@ apt install socat cron bash-completion -y
 #install cert
 systemctl stop nginx
 curl https://get.acme.sh | sh -s email=$email
-/root/.acme.sh/acme.sh --server letsencrypt --register-account -m $email --issue -d $domain --standalone -k ec-256
+/root/.acme.sh/acme.sh --server letsencrypt --register-account -m $email --issue -d $domain --standalone -k ec-256 --debug
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /var/lib/marzban/xray.crt --keypath /var/lib/marzban/xray.key --ecc
 systemctl start nginx
 wget -O /var/lib/marzban/xray_config.json "https://raw.githubusercontent.com/GawrAme/MarLing/main/xray_config.json"
