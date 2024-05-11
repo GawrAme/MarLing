@@ -1,8 +1,30 @@
 #!/bin/bash
+colorized_echo() {
+    local color=$1
+    local text=$2
+    
+    case $color in
+        "red")
+        printf "\e[91m${text}\e[0m\n";;
+        "green")
+        printf "\e[92m${text}\e[0m\n";;
+        "yellow")
+        printf "\e[93m${text}\e[0m\n";;
+        "blue")
+        printf "\e[94m${text}\e[0m\n";;
+        "magenta")
+        printf "\e[95m${text}\e[0m\n";;
+        "cyan")
+        printf "\e[96m${text}\e[0m\n";;
+        *)
+            echo "${text}"
+        ;;
+    esac
+}
 
 # Check if the script is run as root
 if [ "$(id -u)" != "0" ]; then
-    echo "Error: Skrip ini harus dijalankan sebagai root."
+    colorized_echo red "Error: Skrip ini harus dijalankan sebagai root."
     exit 1
 fi
 
@@ -21,7 +43,7 @@ if [ -f /etc/os-release ]; then
 fi
 apt install sudo curl -y
 if [ "$supported_os" != true ]; then
-    echo "Error: Skrip ini hanya support di Debian 11 dan Ubuntu 20.04. Mohon gunakan OS yang di support."
+    colorized_echo red "Error: Skrip ini hanya support di Debian 11 dan Ubuntu 20.04. Mohon gunakan OS yang di support."
     exit 1
 fi
 
@@ -49,7 +71,7 @@ OS=$(lsb_release -si)
 
 # Pemeriksaan IP Indonesia
 if [[ "$COUNTRY_CODE" == "ID" ]]; then
-    echo "IP Indonesia terdeteksi, menggunakan repositories lokal Indonesia"
+    colorized_echo green "IP Indonesia terdeteksi, menggunakan repositories lokal Indonesia"
 
     # Pemeriksaan OS untuk menambahkan repo yang sesuai
     case "$OS" in
@@ -58,7 +80,7 @@ if [[ "$COUNTRY_CODE" == "ID" ]]; then
 			if [ "$VERSION" == "11" ]; then
             addDebian11Repo
 			else
-                echo "Versi Debian tidak didukung."
+                colorized_echo red "Versi Debian ini tidak didukung."
 			fi
             ;;
         Ubuntu)
@@ -66,15 +88,15 @@ if [[ "$COUNTRY_CODE" == "ID" ]]; then
             if [ "$VERSION" == "20.04" ]; then
                 addUbuntu2004Repo
             else
-                echo "Versi Ubuntu tidak didukung."
+                colorized_echo red "Versi Ubuntu ini tidak didukung."
             fi
             ;;
         *)
-            echo "Sistem Operasi tidak didukung."
+            colorized_echo red "Sistem Operasi ini tidak didukung."
             ;;
     esac
 else
-    echo "IP di luar Indonesia."
+    colorized_echo yellow "IP di luar Indonesia."
 
     # Lanjutkan dengan repo bawaan OS
 fi
@@ -261,9 +283,9 @@ echo "Jangan lupa join Channel & Grup Telegram saya juga di" | tee -a log-instal
 echo "Telegram Channel: https://t.me/LingVPN" | tee -a log-install.txt
 echo "Telegram Group: https://t.me/LingVPN_Group" | tee -a log-install.txt
 echo "-=================================-" | tee -a log-install.txt
-echo "Script telah berhasil di install"
+colorized_echo green "Script telah berhasil di install"
 rm /root/mar.sh
-echo "Menghapus admin bawaan dbsqlite"
+colorized_echo blue "Menghapus admin bawaan db.sqlite"
 marzban cli admin delete -u admin -y
 echo -e "[\e[1;31mWARNING\e[0m] Reboot sekali biar ga error lur [default y](y/n)? "
 read answer
