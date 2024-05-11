@@ -34,11 +34,7 @@ Pastikan anda sudah login sebagai root sebelum menjalankan perintah dibawah
  ```html
  wget https://raw.githubusercontent.com/GawrAme/MarLing/main/mar.sh && chmod +x mar.sh && ./mar.sh
  ```
- 
-Setelah instalasi berhasil, Panel login / Admin bisa ditambahkan dengan command
-```html
-marzban cli admin create --sudo
- ```
+
 Buka panel Marzban dengan mengunjungi https://domainmu/dashboard <br>
 
 Jika ingin mengubah konfigurasi env variable 
@@ -57,10 +53,7 @@ Perintah Cek update service Marzban
 ```html
 marzban update
  ```
-Jangan lupa, setiap selesai instalasi diharapkan reboot server nya satu kali dengan memasukkan perintah dibawah
-```html
-cat /dev/null > ~/.bash_history && history -c && reboot
- ```
+
 # Cloudflare Sett
 
 Pastikan SSL/TLS Setting pada cloudflare sudah di set menjadi full
