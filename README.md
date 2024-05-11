@@ -23,13 +23,8 @@ Credit aplikasi full to [Gozargah Marzban](https://github.com/Gozargah), saya ha
 - Pemahaman dasar perintah Linux
 
 # Sistem VM yang dapat digunakan
-- Debian 10 </br>
 - Debian 11 [**RECOMMENDED**] </br>
-- Ubuntu 18.04 </br>
 - Ubuntu 20.04 </br>
-- Ubuntu 22.04 </br>
-
-
 
 # Instalasi
   ```html
