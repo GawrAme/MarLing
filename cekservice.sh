@@ -19,7 +19,7 @@ export SEND="[${YELLOW} SEND ${NC}]";
 export RECEIVE="[${YELLOW} RECEIVE ${NC}]";
 
 # // VAR
-if [[ $(systemctl status nginx | grep -w running | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' | sed 's/ //g') == 'running' ]]; then
+if [[ $(netstat -ntlp | grep -i nginx | grep -i 0.0.0.0:443 | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == '443' ]]; then
     NGINX="${GREEN}Okay${NC}";
 else
     NGINX="${RED}Not Okay${NC}";
