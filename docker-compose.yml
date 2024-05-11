@@ -8,3 +8,18 @@ services:
     - /etc/timezone:/etc/timezone:ro
     - /etc/localtime:/etc/localtime:ro
     - /var/lib/marzban:/var/lib/marzban
+
+  nginx:
+    image: nginx
+    restart: always
+    network_mode: host
+    volumes:
+    - /var/lib/marzban:/var/lib/marzban
+    - /var/www/html:/var/www/html
+    - /etc/timezone:/etc/timezone:ro
+    - /etc/localtime:/etc/localtime:ro
+    - /var/log/nginx/access.log:/var/log/nginx/access.log
+    - /var/log/nginx/error.log:/var/log/nginx/error.log
+    - ./nginx.conf:/etc/nginx/nginx.conf
+    - ./default.conf:/etc/nginx/conf.d/default.conf
+    - ./xray.conf:/etc/nginx/conf.d/xray.conf
