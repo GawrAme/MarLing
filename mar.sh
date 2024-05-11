@@ -161,8 +161,9 @@ wget -O /opt/marzban/.env "https://raw.githubusercontent.com/GawrAme/MarLing/mai
 
 #install core Xray
 mkdir -p /var/lib/marzban/core
-wget -O /var/lib/marzban/core/xray.zip "https://github.com/XTLS/Xray-core/releases/download/v1.8.10/Xray-linux-64.zip" && unzip /var/lib/marzban/core/xray.zip
-chmod +x /var/lib/marzban/core/xray
+wget -O /var/lib/marzban/core/xray.zip "https://github.com/XTLS/Xray-core/releases/download/v1.8.10/Xray-linux-64.zip"  
+cd /var/lib/marzban/core && unzip xray.zip && chmod +x xray
+cd
 
 #profile
 echo -e 'profile' >> /root/.profile
@@ -210,11 +211,9 @@ apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dns
 apt install socat cron bash-completion -y
 
 #install cert
-systemctl stop nginx
 curl https://get.acme.sh | sh -s email=$email
 /root/.acme.sh/acme.sh --server letsencrypt --register-account -m $email --issue -d $domain --standalone -k ec-256 --debug
 ~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /var/lib/marzban/xray.crt --keypath /var/lib/marzban/xray.key --ecc
-systemctl start nginx
 wget -O /var/lib/marzban/xray_config.json "https://raw.githubusercontent.com/GawrAme/MarLing/main/xray_config.json"
 
 #install firewall
@@ -250,6 +249,18 @@ sed -i "s/SUDO_USERNAME = \"${userpanel}\"/# SUDO_USERNAME = \"admin\"/" /opt/ma
 sed -i "s/SUDO_PASSWORD = \"${passpanel}\"/# SUDO_PASSWORD = \"admin\"/" /opt/marzban/.env
 docker compose down && docker compose up -d
 cd
+profile
+echo "Untuk data login dashboard Marzban: " | tee -a log-install.txt
+echo "-=================================-" | tee -a log-install.txt
+echo "URL HTTPS : https://${domain}/dashboard" | tee -a log-install.txt
+echo "URL HTTP  : http://${domain}:7879/dashboard" | tee -a log-install.txt
+echo "username  : ${userpanel}" | tee -a log-install.txt
+echo "password  : ${passpanel}" | tee -a log-install.txt
+echo "-=================================-" | tee -a log-install.txt
+echo "Jangan lupa join Channel & Grup Telegram saya juga di" | tee -a log-install.txt
+echo "Telegram Channel: https://t.me/LingVPN" | tee -a log-install.txt
+echo "Telegram Group: https://t.me/LingVPN_Group" | tee -a log-install.txt
+echo "-=================================-" | tee -a log-install.txt
 echo "Script telah berhasil di install"
 rm /root/mar.sh
 echo "Menghapus admin bawaan dbsqlite"
