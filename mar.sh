@@ -79,6 +79,7 @@ else
     # Lanjutkan dengan repo bawaan OS
 fi
 mkdir -p /etc/data
+
 #domain
 read -rp "Masukkan Domain: " domain
 echo "$domain" > /etc/data/domain
@@ -86,6 +87,24 @@ domain=$(cat /etc/datadomain)
 
 #email
 read -rp "Masukkan Email anda: " email
+
+#username
+while true; do
+    read -rp "Masukkan UsernamePanel (hanya huruf dan angka): " userpanel
+
+    # Memeriksa apakah userpanel hanya mengandung huruf dan angka
+    if [[ ! "$userpanel" =~ ^[A-Za-z0-9]+$ ]]; then
+        echo "UsernamePanel hanya boleh berisi huruf dan angka. Silakan masukkan kembali."
+    elif [[ "$userpanel" =~ [Aa][Dd][Mm][Ii][Nn] ]]; then
+        echo "UsernamePanel tidak boleh mengandung kata 'admin'. Silakan masukkan kembali."
+    else
+        echo "$userpanel" > /etc/data/userpanel
+        break
+    fi
+done
+
+read -rp "Masukkan Password Panel: " passpanel
+echo "$passpanel" > /etc/data/passpanel
 
 #Preparation
 clear
@@ -139,6 +158,11 @@ wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubuserconte
 
 #install env
 wget -O /opt/marzban/.env "https://raw.githubusercontent.com/GawrAme/MarLing/main/env"
+
+#install core Xray
+mkdir -p /var/lib/marzban/core
+wget -O /var/lib/marzban/core/xray.zip "https://github.com/XTLS/Xray-core/releases/download/v1.8.10/Xray-linux-64.zip" && unzip /var/lib/marzban/core/xray.zip
+chmod +x /var/lib/marzban/core/xray
 
 #profile
 echo -e 'profile' >> /root/.profile
@@ -217,10 +241,23 @@ sudo bash /root/warp -y
 #finishing
 apt autoremove -y
 apt clean
-systemctl restart nginx
 cd /opt/marzban
+sed -i "s/# SUDO_USERNAME = \"admin\"/SUDO_USERNAME = \"${userpanel}\"/" /opt/marzban/.env
+sed -i "s/# SUDO_PASSWORD = \"admin\"/SUDO_PASSWORD = \"${passpanel}\"/" /opt/marzban/.env
+docker compose down && docker compose up -d
+marzban cli admin import-from-env -y
+sed -i "s/SUDO_USERNAME = \"${userpanel}\"/# SUDO_USERNAME = \"admin\"/" /opt/marzban/.env
+sed -i "s/SUDO_PASSWORD = \"${passpanel}\"/# SUDO_PASSWORD = \"admin\"/" /opt/marzban/.env
 docker compose down && docker compose up -d
 cd
+echo "Script telah berhasil di install"
 rm /root/mar.sh
-
-
+echo "Menghapus admin bawaan dbsqlite"
+marzban cli admin delete -u admin -y
+echo -e "[\e[1;31mWARNING\e[0m] Reboot sekali biar ga error lur [default y](y/n)? "
+read answer
+if [ "$answer" == "${answer#[Yy]}" ] ;then
+exit 0
+else
+reboot
+fi
