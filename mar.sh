@@ -259,5 +259,5 @@ read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 exit 0
 else
-reboot
+cat /dev/null > ~/.bash_history && history -c && reboot
 fi
