@@ -83,7 +83,7 @@ mkdir -p /etc/data
 #domain
 read -rp "Masukkan Domain: " domain
 echo "$domain" > /etc/data/domain
-domain=$(cat /etc/datadomain)
+domain=$(cat /etc/data/domain)
 
 #email
 read -rp "Masukkan Email anda: " email
