@@ -19,7 +19,7 @@ if [ -f /etc/os-release ]; then
         supported_os=true
     fi
 fi
-apt install sudo -y
+apt install sudo curl -y
 if [ "$supported_os" != true ]; then
     echo "Error: Skrip ini hanya support di Debian 11 dan Ubuntu 20.04. Mohon gunakan OS yang di support."
     exit 1
