@@ -213,6 +213,79 @@
       }
     },
     {
+      "tag": "TROJAN_HU",
+      "listen": "127.0.0.1",
+      "port": 5001,
+      "protocol": "trojan",
+      "settings": {
+        "clients": []
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "security": "none",
+        "httpupgradeSettings": {
+          "path": "/trojan-hu"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "tag": "VMESS_HU",
+      "listen": "127.0.0.1",
+      "port": 5002,
+      "protocol": "vmess",
+      "settings": {
+        "clients": []
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "security": "none",
+        "httpupgradeSettings": {
+          "path": "/vmess-hu"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "tag": "VLESS_HU",
+      "listen": "127.0.0.1",
+      "port": 5003,
+      "protocol": "vless",
+      "settings": {
+        "clients": [],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "httpupgrade",
+        "security": "none",
+        "httpupgradeSettings": {
+          "path": "/vless-hu"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
       "tag": "SHADOWSOCKS_OUTLINE",
       "listen": "0.0.0.0",
       "port": 1080,
@@ -232,9 +305,13 @@
       }
     },
     {
+      "tag": "block",
       "protocol": "blackhole",
-      "settings": {},
-      "tag": "block"
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
     },
     {
       "protocol": "dns",
@@ -248,20 +325,12 @@
       "protocol": "socks",
       "settings": {
         "servers": [
-          {
-            "address": "127.0.0.1",
-            "port": 40000
-          }
-        ]
-      }
-    }
-  ],
-  "policy": {
-    "levels": {
-      "0": {
-        "handshake": 2,
-        "connIdle": 120
-      }
-    }
-  }
+                    {
+                        "address": "127.0.0.1",
+                        "port": 40000
+                    }
+                ]
+            }
+        }
+    ]
 }
