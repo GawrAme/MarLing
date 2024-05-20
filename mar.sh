@@ -57,12 +57,12 @@ deb http://kartolo.sby.datautama.net.id/debian-security bullseye-security main c
 
 # Fungsi untuk menambahkan repo Ubuntu 20.04
 addUbuntu2004Repo() {
-    echo "#mirror kartolo ubuntu 20.04
-deb http://kartolo.sby.datautama.net.id/ubuntu/ focal main restricted universe multiverse
-deb http://kartolo.sby.datautama.net.id/ubuntu/ focal-updates main restricted universe multiverse
-deb http://kartolo.sby.datautama.net.id/ubuntu/ focal-security main restricted universe multiverse
-deb http://kartolo.sby.datautama.net.id/ubuntu/ focal-backports main restricted universe multiverse
-deb http://kartolo.sby.datautama.net.id/ubuntu/ focal-proposed main restricted universe multiverse" | sudo tee /etc/apt/sources.list > /dev/null
+    echo "#mirror buaya klas 20.04
+deb https://buaya.klas.or.id/ubuntu/ focal main restricted universe multiverse
+deb https://buaya.klas.or.id/ubuntu/ focal-updates main restricted universe multiverse
+deb https://buaya.klas.or.id/ubuntu/ focal-security main restricted universe multiverse
+deb https://buaya.klas.or.id/ubuntu/ focal-backports main restricted universe multiverse
+deb https://buaya.klas.or.id/ubuntu/ focal-proposed main restricted universe multiverse" | sudo tee /etc/apt/sources.list > /dev/null
 }
 
 # Mendapatkan informasi kode negara dan OS
@@ -73,31 +73,38 @@ OS=$(lsb_release -si)
 if [[ "$COUNTRY_CODE" == "ID" ]]; then
     colorized_echo green "IP Indonesia terdeteksi, menggunakan repositories lokal Indonesia"
 
-    # Pemeriksaan OS untuk menambahkan repo yang sesuai
-    case "$OS" in
-        Debian)
-	VERSION=$(lsb_release -sr)
-			if [ "$VERSION" == "11" ]; then
-            addDebian11Repo
-			else
-                colorized_echo red "Versi Debian ini tidak didukung."
-			fi
-            ;;
-        Ubuntu)
-            VERSION=$(lsb_release -sr)
-            if [ "$VERSION" == "20.04" ]; then
-                addUbuntu2004Repo
-            else
-                colorized_echo red "Versi Ubuntu ini tidak didukung."
-            fi
-            ;;
-        *)
-            colorized_echo red "Sistem Operasi ini tidak didukung."
-            ;;
-    esac
+    # Menanyakan kepada pengguna apakah ingin menggunakan repo lokal atau repo default
+    read -p "Apakah Anda ingin menggunakan repo lokal Indonesia? (y/n): " use_local_repo
+
+    if [[ "$use_local_repo" == "y" || "$use_local_repo" == "Y" ]]; then
+        # Pemeriksaan OS untuk menambahkan repo yang sesuai
+        case "$OS" in
+            Debian)
+                VERSION=$(lsb_release -sr)
+                if [ "$VERSION" == "11" ]; then
+                    addDebian11Repo
+                else
+                    colorized_echo red "Versi Debian ini tidak didukung."
+                fi
+                ;;
+            Ubuntu)
+                VERSION=$(lsb_release -sr)
+                if [ "$VERSION" == "20.04" ]; then
+                    addUbuntu2004Repo
+                else
+                    colorized_echo red "Versi Ubuntu ini tidak didukung."
+                fi
+                ;;
+            *)
+                colorized_echo red "Sistem Operasi ini tidak didukung."
+                ;;
+        esac
+    else
+        colorized_echo yellow "Menggunakan repo bawaan VM."
+        # Tidak melakukan apa-apa, sehingga repo bawaan VM tetap digunakan
+    fi
 else
     colorized_echo yellow "IP di luar Indonesia."
-
     # Lanjutkan dengan repo bawaan OS
 fi
 mkdir -p /etc/data
