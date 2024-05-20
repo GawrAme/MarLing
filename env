@@ -27,6 +27,7 @@ XRAY_EXECUTABLE_PATH = "/var/lib/marzban/core/xray"
 
 # CLASH_SUBSCRIPTION_TEMPLATE="clash/my-custom-template.yml"
 SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
+CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzban/templates/"
 HOME_PAGE_TEMPLATE="home/index.html"
 # SUBSCRIPTION_PAGE_LANG="en"
 
