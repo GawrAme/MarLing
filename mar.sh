@@ -294,7 +294,7 @@ cd
 profile
 echo "Untuk data login dashboard Marzban: " | tee -a log-install.txt
 echo "-=================================-" | tee -a log-install.txt
-echo "URL HTTPS : https://${domain}/dashboard" | tee -a log-install.txt
+echo "URL HTTPS : https://${domain}:${port}/dashboard" | tee -a log-install.txt
 echo "URL HTTP  : http://${domain}:${port}/dashboard" | tee -a log-install.txt
 echo "username  : ${userpanel}" | tee -a log-install.txt
 echo "password  : ${passpanel}" | tee -a log-install.txt
