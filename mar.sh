@@ -135,6 +135,18 @@ done
 read -rp "Masukkan Password Panel: " passpanel
 echo "$passpanel" > /etc/data/passpanel
 
+# Function to validate port input
+while true; do
+  read -rp "Masukkan Default Port untuk Marzban Dashboard GUI (selain 443 dan 80): " port
+
+  if [[ "$port" -eq 443 || "$port" -eq 80 ]]; then
+    echo "Port $port tidak valid. Silakan isi dengan port selain 443 atau 80."
+  else
+    echo "Port yang Anda masukkan adalah: $port"
+    break
+  fi
+done
+
 #Preparation
 clear
 cd;
@@ -190,7 +202,7 @@ wget -O /opt/marzban/.env "https://raw.githubusercontent.com/GawrAme/MarLing/mai
 
 #install core Xray
 mkdir -p /var/lib/marzban/core
-wget -O /var/lib/marzban/core/xray.zip "https://github.com/XTLS/Xray-core/releases/download/v1.8.10/Xray-linux-64.zip"  
+wget -O /var/lib/marzban/core/xray.zip "https://github.com/XTLS/Xray-core/releases/download/v1.8.16/Xray-linux-64.zip"  
 cd /var/lib/marzban/core && unzip xray.zip && chmod +x xray
 cd
 
@@ -252,10 +264,10 @@ sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw allow http
 sudo ufw allow https
-sudo ufw allow 7879/tcp
 sudo ufw allow 8081/tcp
 sudo ufw allow 1080/tcp
 sudo ufw allow 1080/udp
+sudo ufw allow $port/tcp
 yes | sudo ufw enable
 
 #install database
@@ -282,7 +294,7 @@ profile
 echo "Untuk data login dashboard Marzban: " | tee -a log-install.txt
 echo "-=================================-" | tee -a log-install.txt
 echo "URL HTTPS : https://${domain}/dashboard" | tee -a log-install.txt
-echo "URL HTTP  : http://${domain}:7879/dashboard" | tee -a log-install.txt
+echo "URL HTTP  : http://${domain}:${port}/dashboard" | tee -a log-install.txt
 echo "username  : ${userpanel}" | tee -a log-install.txt
 echo "password  : ${passpanel}" | tee -a log-install.txt
 echo "-=================================-" | tee -a log-install.txt
