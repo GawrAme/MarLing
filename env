@@ -16,7 +16,7 @@ XRAY_JSON = "/var/lib/marzban/xray_config.json"
 XRAY_EXECUTABLE_PATH = "/var/lib/marzban/core/xray"
 # XRAY_SUBSCRIPTION_URL_PREFIX = "https://example.com"
 # XRAY_EXECUTABLE_PATH = "/var/lib/marzban/core/xray"
-# XRAY_ASSETS_PATH = "/var/lib/marzban/assets"
+XRAY_ASSETS_PATH = "/var/lib/marzban/assets"
 # XRAY_FALLBACKS_INBOUND_TAG = "INBOUND_X"
 
 
