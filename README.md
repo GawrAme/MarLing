@@ -35,7 +35,7 @@ Pastikan anda sudah login sebagai root sebelum menjalankan perintah dibawah
  wget https://raw.githubusercontent.com/GawrAme/MarLing/main/mar.sh && chmod +x mar.sh && ./mar.sh
  ```
 
-Buka panel Marzban dengan mengunjungi https://domainmu/dashboard <br>
+Buka panel Marzban dengan mengunjungi https://domainmu:portyangsudahdiset/dashboard <br>
 
 Jika ingin mengubah konfigurasi env variable 
 ```html
