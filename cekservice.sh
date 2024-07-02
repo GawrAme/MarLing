@@ -1,4 +1,5 @@
 #!/bin/bash
+port=$(netstat -tunlp | grep 'python' | awk '{split($4, a, ":"); print a[2]}')
 
 # // Code for service
 export RED='\033[0;31m';
@@ -24,7 +25,7 @@ if [[ $(netstat -ntlp | grep -i nginx | grep -i 0.0.0.0:443 | awk '{print $4}' |
 else
     NGINX="${RED}Not Okay${NC}";
 fi
-if [[ $(netstat -ntlp | grep -i python | grep -i 0.0.0.0:7879 | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == '7879' ]]; then
+if [[ $(netstat -ntlp | grep -i python | grep -i "0.0.0.0:${port}" | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == "${port}" ]]; then
     MARZ="${GREEN}Okay${NC}";
 else
     MARZ="${RED}Not Okay${NC}";
