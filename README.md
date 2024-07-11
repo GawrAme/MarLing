@@ -76,12 +76,3 @@ Lalu ubah variabel {SERVER_IP} dibawah menjadi domain yang sudah di pointing tad
 
 Jika ada typo atau saran bisa PM ke saya di :<a href="https://t.me/EkoLing" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
 Jika anda berminat bisa join ke Telegram channel saya di :<a href="https://t.me/LingVPN" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
-<br>
-
-Jika menurut pean script ini membantu, boleh kira nya membelikan saya secangkir kopi melalui QRis dibawah, berapapun nominal nya saya terima 🙏 <br>
-
-![image](https://github.com/GawrAme/MarLing/assets/97426017/096f46ba-ed4d-47c8-a887-f3f3acd595d5)
-
-Terima kasih orang baik! 🙏 
-
-</br>
