@@ -1,0 +1,46 @@
+List site game pada script EZ Routing Script marzban by LingVPN : 
+
+
+- FreeFire
+- PUBG/M
+- Roblox
+- Agar.io
+- Arknights 
+- Ark
+- BigFishGames
+- Call of Duty Mobile
+- Candy Crush
+- Clash of Clans
+- Clash Royal
+- Cpmstar
+- Erolabs
+- Fifa
+- Forge of empires
+- Garena (Support)
+- Gameloft
+- Growtopia
+- HayDay Game
+- King Games
+- Level Infinite (Tencent)
+- Kuro Games
+- Microsoft Games
+- MiHoYo / Hoyoverse / Cognosphere
+- Minecraft
+- Miniclip
+- Mixer
+- Mobile Legends
+- Netease
+- Playrix
+- Pokemon GO
+- Punishing Gray Raven
+- Supercell
+- Take2Games
+- Unity3d
+- War Gaming
+- Arknights 
+- Stumble Guys 
+- PointBlank PC
+- Arena of Valor 
+- Honor of Kings 
+- RPG Toram Online
+- Wuthering Waves 
