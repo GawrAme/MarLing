@@ -278,12 +278,21 @@ sed -i "s/SUDO_USERNAME = \"${userpanel}\"/# SUDO_USERNAME = \"admin\"/" /opt/ma
 sed -i "s/SUDO_PASSWORD = \"${passpanel}\"/# SUDO_PASSWORD = \"admin\"/" /opt/marzban/.env
 docker compose down && docker compose up -d
 cd
+echo "Tunggu 15 detik untuk generate token API"
+sleep 15s
+
+#instal token
+curl -X 'POST' \
+  "https://${domain}/api/admin/token" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d "grant_type=password&username=${userpanel}&password=${passpanel}&scope=&client_id=&client_secret=" > /etc/data/token.json
+cd
 profile
 touch /root/log-install.txt
 echo "Untuk data login dashboard Marzban: " | tee -a /root/log-install.txt
 echo "-=================================-" | tee -a /root/log-install.txt
 echo "URL HTTPS : https://${domain}/dashboard" | tee -a /root/log-install.txt
-echo "URL HTTP  : http://${domain}/dashboard" | tee -a /root/log-install.txt
 echo "username  : ${userpanel}" | tee -a /root/log-install.txt
 echo "password  : ${passpanel}" | tee -a /root/log-install.txt
 echo "-=================================-" | tee -a /root/log-install.txt
@@ -295,17 +304,6 @@ colorized_echo green "Script telah berhasil di install"
 rm /root/mar.sh
 colorized_echo blue "Menghapus admin bawaan db.sqlite"
 marzban cli admin delete -u admin -y
-echo "Tunggu 15 detik untuk generate token API"
-sleep 15s
-
-#instal token
-curl -X 'POST' \
-  "https://${domain}/api/admin/token" \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d "grant_type=&passwordusername=${userpanel}&password=${passpanel}&scope=&client_id=&client_secret=" > /etc/data/token.json
-cd
-
 echo -e "[\e[1;31mWARNING\e[0m] Reboot sekali biar ga error lur [default y](y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
