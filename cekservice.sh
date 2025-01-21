@@ -36,6 +36,23 @@ if [[ $(systemctl status ufw | grep -w Active | awk '{print $2}' | sed 's/(//g' 
 else
     UFW="${RED}Not Okay${NC}";
 fi
+# Function to fetch system information from Marzban API
+function get_marzban_info() {
+
+    local marzban_api="https://${domain}/api/system"
+    local marzban_info=$(curl -s -X 'GET' "$marzban_api" -H 'accept: application/json' -H "Authorization: Bearer $token")
+
+    if [[ $? -eq 0 ]]; then
+# Parsing Marzban API response
+marzban_version=$(echo "$marzban_info" | jq -r '.version')
+    else
+        echo -e "${ERROR} Failed to fetch Marzban information."
+        exit 1
+    fi
+}
+# Usage of the function
+get_marzban_info "your_domain_here" "your_token_here"
+
 versimarzban=$(grep 'image: gozargah/marzban:' /opt/marzban/docker-compose.yml | awk -F: '{print $3}')
   # Replace values and specific version
   case "${versimarzban}" in
