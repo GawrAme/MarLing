@@ -21,7 +21,7 @@ export SEND="[${YELLOW} SEND ${NC}]";
 export RECEIVE="[${YELLOW} RECEIVE ${NC}]";
 
 # // VAR
-if [[ $(netstat -ntlp | grep -i nginx | grep -i 0.0.0.0:443 | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == '443' ]]; then
+if [[ $(netstat -ntlp | grep -i nginx | grep -i 0.0.0.0:8081 | awk '{print $4}' | cut -d: -f2 | xargs | sed -e 's/ /, /g') == '8081' ]]; then
     NGINX="${GREEN}Okay${NC}";
 else
     NGINX="${RED}Not Okay${NC}";
@@ -36,6 +36,7 @@ if [[ $(systemctl status ufw | grep -w Active | awk '{print $2}' | sed 's/(//g' 
 else
     UFW="${RED}Not Okay${NC}";
 fi
+
 # Function to fetch system information from Marzban API
 function get_marzban_info() {
 
@@ -78,7 +79,7 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[44;1;39m            ⇱ Service Information ⇲             \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "❇️ Marzban Version     : ${GREEN}${marzban_version}${NC} ${BLUE}${versimarzban}${NC}"
-echo -e "❇️ XrayCore Version    : ${GREEN}${xray_core_version}${NC}"
+echo -e "❇️ Core Version        : ${GREEN}Xray ${xray_core_version}${NC}"
 echo -e "❇️ Nginx               : $NGINX"
 echo -e "❇️ Firewall            : $UFW"
 echo -e "❇️ Marzban Panel       : $MARZ"
