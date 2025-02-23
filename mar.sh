@@ -128,11 +128,8 @@ wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubuserconte
 #install env
 wget -O /opt/marzban/.env "https://raw.githubusercontent.com/GawrAme/MarLing/main/env"
 
-#install core Xray & Assets folder
+#install Assets folder
 mkdir -p /var/lib/marzban/assets
-mkdir -p /var/lib/marzban/core
-wget -O /var/lib/marzban/core/xray.zip "https://github.com/XTLS/Xray-core/releases/download/v1.8.24/Xray-linux-64.zip"  
-cd /var/lib/marzban/core && unzip xray.zip && chmod +x xray
 cd
 
 #profile
@@ -226,7 +223,7 @@ curl -X 'POST' \
   "https://${domain}/api/admin/token" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d "grant_type=password&username=${userpanel}&password=${passpanel}&scope=&client_id=&client_secret=" > /etc/data/token.json
+  -d "grant_type=password&username=${userpanel}&password=${passpanel}&scope=&client_id=string&client_secret=string" > /etc/data/token.json
 cd
 profile
 touch /root/log-install.txt
