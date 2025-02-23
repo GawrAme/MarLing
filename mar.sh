@@ -35,78 +35,18 @@ if [ -f /etc/os-release ]; then
     os_name=$(grep -E '^ID=' /etc/os-release | cut -d= -f2)
     os_version=$(grep -E '^VERSION_ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
 
-    if [ "$os_name" == "debian" ] && [ "$os_version" == "11" ]; then
-        supported_os=true
+ if [ "$os_name" == "debian" ] && ([ "$os_version" == "11" ] || [ "$os_version" == "12" ]); then
+    supported_os=true
     elif [ "$os_name" == "ubuntu" ] && [ "$os_version" == "20.04" ]; then
         supported_os=true
     fi
 fi
 apt install sudo curl -y
 if [ "$supported_os" != true ]; then
-    colorized_echo red "Error: Skrip ini hanya support di Debian 11 dan Ubuntu 20.04. Mohon gunakan OS yang di support."
+    colorized_echo red "Error: Skrip ini hanya support di Debian 11/12 dan Ubuntu 20.04. Mohon gunakan OS yang di support."
     exit 1
 fi
 
-# Fungsi untuk menambahkan repo Debian 11
-addDebian11Repo() {
-    echo "#mirror_kambing-sysadmind deb11
-deb http://kartolo.sby.datautama.net.id/debian bullseye main contrib non-free
-deb http://kartolo.sby.datautama.net.id/debian bullseye-updates main contrib non-free
-deb http://kartolo.sby.datautama.net.id/debian-security bullseye-security main contrib non-free" | sudo tee /etc/apt/sources.list > /dev/null
-}
-
-# Fungsi untuk menambahkan repo Ubuntu 20.04
-addUbuntu2004Repo() {
-    echo "#mirror buaya klas 20.04
-deb https://buaya.klas.or.id/ubuntu/ focal main restricted universe multiverse
-deb https://buaya.klas.or.id/ubuntu/ focal-updates main restricted universe multiverse
-deb https://buaya.klas.or.id/ubuntu/ focal-security main restricted universe multiverse
-deb https://buaya.klas.or.id/ubuntu/ focal-backports main restricted universe multiverse
-deb https://buaya.klas.or.id/ubuntu/ focal-proposed main restricted universe multiverse" | sudo tee /etc/apt/sources.list > /dev/null
-}
-
-# Mendapatkan informasi kode negara dan OS
-COUNTRY_CODE=$(curl -s https://ipinfo.io/country)
-OS=$(lsb_release -si)
-
-# Pemeriksaan IP Indonesia
-if [[ "$COUNTRY_CODE" == "ID" ]]; then
-    colorized_echo green "IP Indonesia terdeteksi, menggunakan repositories lokal Indonesia"
-
-    # Menanyakan kepada pengguna apakah ingin menggunakan repo lokal atau repo default
-    read -p "Apakah Anda ingin menggunakan repo lokal Indonesia? (y/n): " use_local_repo
-
-    if [[ "$use_local_repo" == "y" || "$use_local_repo" == "Y" ]]; then
-        # Pemeriksaan OS untuk menambahkan repo yang sesuai
-        case "$OS" in
-            Debian)
-                VERSION=$(lsb_release -sr)
-                if [ "$VERSION" == "11" ]; then
-                    addDebian11Repo
-                else
-                    colorized_echo red "Versi Debian ini tidak didukung."
-                fi
-                ;;
-            Ubuntu)
-                VERSION=$(lsb_release -sr)
-                if [ "$VERSION" == "20.04" ]; then
-                    addUbuntu2004Repo
-                else
-                    colorized_echo red "Versi Ubuntu ini tidak didukung."
-                fi
-                ;;
-            *)
-                colorized_echo red "Sistem Operasi ini tidak didukung."
-                ;;
-        esac
-    else
-        colorized_echo yellow "Menggunakan repo bawaan VM."
-        # Tidak melakukan apa-apa, sehingga repo bawaan VM tetap digunakan
-    fi
-else
-    colorized_echo yellow "IP di luar Indonesia."
-    # Lanjutkan dengan repo bawaan OS
-fi
 mkdir -p /etc/data
 
 #domain
@@ -278,8 +218,8 @@ sed -i "s/SUDO_USERNAME = \"${userpanel}\"/# SUDO_USERNAME = \"admin\"/" /opt/ma
 sed -i "s/SUDO_PASSWORD = \"${passpanel}\"/# SUDO_PASSWORD = \"admin\"/" /opt/marzban/.env
 docker compose down && docker compose up -d
 cd
-echo "Tunggu 15 detik untuk generate token API"
-sleep 15s
+echo "Tunggu 30 detik untuk generate token API"
+sleep 30s
 
 #instal token
 curl -X 'POST' \
