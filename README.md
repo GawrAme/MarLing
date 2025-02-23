@@ -1,8 +1,8 @@
 # MarLing
 
-Ini adalah [Marzban](https://github.com/Gozargah/Marzban) yang sudah saya tambahkan nginx untuk konfigurasi koneksi WebSocket, HTTP Upgrade dan gRPC single port. </br>
+Ini adalah [Marzban](https://github.com/Gozargah/Marzban) yang sudah saya tambahkan nginx untuk konfigurasi koneksi WebSocket dan XHTTP pada single port. </br>
 WebSocket sudah support untuk 443 TLS, 80 HTTP dan Wildcard path, contoh /enter-your-custom-path/trojan </br>
-gRPC sudah support untuk 443 TLS </br>
+XHTTP sudah support untuk 443 TLS Quic </br>
 
 Disclaimer: Proyek ini hanya untuk pembelajaran dan komunikasi pribadi, mohon jangan menggunakannya untuk tujuan ilegal. </br>
 Credit aplikasi full to [Gozargah Marzban](https://github.com/Gozargah), saya hanya edit sedikit untuk instalasi sederhana bagi pemula . </br>
@@ -23,7 +23,8 @@ Credit aplikasi full to [Gozargah Marzban](https://github.com/Gozargah), saya ha
 - Pemahaman dasar perintah Linux
 
 # Sistem VM yang dapat digunakan
-- Debian 11 [**RECOMMENDED**] </br>
+- Debian 11 </br>
+- Debian 12 [**RECOMMENDED**] </br>
 - Ubuntu 20.04 </br>
 
 # Instalasi
@@ -35,11 +36,11 @@ Pastikan anda sudah login sebagai root sebelum menjalankan perintah dibawah
  wget https://raw.githubusercontent.com/GawrAme/MarLing/main/mar.sh && chmod +x mar.sh && ./mar.sh
  ```
 
-Buka panel Marzban dengan mengunjungi https://domainmu:portyangsudahdiset/dashboard <br>
+Buka panel Marzban dengan mengunjungi https://domainmu/dashboard <br>
 
 Jika ingin mengubah konfigurasi env variable 
 ```html
-nano /opt/marzban/.env
+marzban edit-env
  ```
 Perintah Restart service Marzban 
 ```html
@@ -49,9 +50,25 @@ Perintah Cek Logs service Marzban
 ```html
 marzban logs
  ```
+Perintah ganti Core Xray marzban
+```html
+marzban core-update
+ ```
+Perintah untuk sett backup marzban
+```html
+ marzban backup-service
+ ```
 Perintah Cek update service Marzban
 ```html
 marzban update
+ ```
+Perintah untuk ke Menu Warp
+```html
+warp
+ ```
+atau selebih nya bisa cek 
+```html
+warp --help
  ```
 
 # Cloudflare Sett
