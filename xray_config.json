@@ -52,10 +52,12 @@
       "sniffing": {
         "enabled": true,
         "destOverride": [
+          "fakedns+others",
           "http",
           "tls",
           "quic"
-        ]
+        ],
+        "routeOnly": true
       }
     },
     {
@@ -76,10 +78,12 @@
       "sniffing": {
         "enabled": true,
         "destOverride": [
+          "fakedns+others",
           "http",
           "tls",
           "quic"
-        ]
+        ],
+        "routeOnly": true
       }
     },
     {
@@ -101,178 +105,91 @@
       "sniffing": {
         "enabled": true,
         "destOverride": [
+          "fakedns+others",
           "http",
           "tls",
           "quic"
-        ]
+        ],
+        "routeOnly": true
       }
     },
     {
-      "tag": "TROJAN_GRPC",
+      "tag": "TROJAN_XHTTP",
       "listen": "127.0.0.1",
       "port": 4001,
       "protocol": "trojan",
       "settings": {
-        "clients": [],
-        "decryption": "none",
-        "fallbacks": [
-          {
-            "dest": 8081
-          }
-        ]
+        "clients": []
       },
       "streamSettings": {
-        "network": "grpc",
-        "grpcSettings": {
-          "serviceName": "trojan-service",
-          "acceptProxyProtocol": true,
-          "multiMode": true
+        "network": "xhttp",
+        "xhttpSettings": {
+          "mode": "auto",
+          "path": "/xtrojan"
         }
       },
       "sniffing": {
         "enabled": true,
         "destOverride": [
+          "fakedns+others",
           "http",
           "tls",
           "quic"
-        ]
+        ],
+        "routeOnly": true
       }
     },
     {
-      "tag": "VMESS_GRPC",
+      "tag": "VMESS_XHTTP",
       "listen": "127.0.0.1",
       "port": 4002,
       "protocol": "vmess",
       "settings": {
-        "clients": [],
-        "decryption": "none",
-        "fallbacks": [
-          {
-            "dest": 8081
-          }
-        ]
+        "clients": []
       },
       "streamSettings": {
-        "network": "grpc",
-        "security": "none",
-        "grpcSettings": {
-          "acceptProxyProtocol": true,
-          "serviceName": "vmess-service",
-          "multiMode": true
+        "network": "xhttp",
+        "xhttpSettings": {
+          "mode": "auto",
+          "path": "/xvmess"
         }
       },
       "sniffing": {
         "enabled": true,
         "destOverride": [
+          "fakedns+others",
           "http",
           "tls",
           "quic"
-        ]
+        ],
+        "routeOnly": true
       }
     },
     {
-      "tag": "VLESS_GRPC",
+      "tag": "VLESS_XHTTP",
       "listen": "127.0.0.1",
       "port": 4003,
-      "protocol": "vless",
-      "settings": {
-        "clients": [],
-        "decryption": "none",
-        "fallbacks": [
-          {
-            "dest": 8081
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "none",
-        "grpcSettings": {
-          "acceptProxyProtocol": true,
-          "serviceName": "vless-service",
-          "multiMode": true
-        }
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ]
-      }
-    },
-    {
-      "tag": "TROJAN_HU",
-      "listen": "127.0.0.1",
-      "port": 5001,
-      "protocol": "trojan",
-      "settings": {
-        "clients": []
-      },
-      "streamSettings": {
-        "network": "httpupgrade",
-        "security": "none",
-        "httpupgradeSettings": {
-          "path": "/trojan-hu"
-        }
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ]
-      }
-    },
-    {
-      "tag": "VMESS_HU",
-      "listen": "127.0.0.1",
-      "port": 5002,
-      "protocol": "vmess",
-      "settings": {
-        "clients": []
-      },
-      "streamSettings": {
-        "network": "httpupgrade",
-        "security": "none",
-        "httpupgradeSettings": {
-          "path": "/vmess-hu"
-        }
-      },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls",
-          "quic"
-        ]
-      }
-    },
-    {
-      "tag": "VLESS_HU",
-      "listen": "127.0.0.1",
-      "port": 5003,
       "protocol": "vless",
       "settings": {
         "clients": [],
         "decryption": "none"
       },
       "streamSettings": {
-        "network": "httpupgrade",
-        "security": "none",
-        "httpupgradeSettings": {
-          "path": "/vless-hu"
+        "network": "xhttp",
+        "xhttpSettings": {
+          "mode": "auto",
+          "path": "/xvless"
         }
       },
       "sniffing": {
         "enabled": true,
         "destOverride": [
+          "fakedns+others",
           "http",
           "tls",
           "quic"
-        ]
+        ],
+        "routeOnly": true
       }
     },
     {
@@ -303,7 +220,7 @@
         }
       }
     },
-   {
+    {
       "tag": "dns-out",
       "protocol": "dns",
       "settings": {
